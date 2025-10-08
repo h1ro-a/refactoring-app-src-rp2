@@ -27,7 +27,8 @@ public class MainSystem {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException, ParseException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int menuNo = 0;
+		int inputMenuNumber = 0;
+		final int STOP_PROCESSING = 7;
 
 		do {
 			// メニューの表示
@@ -43,10 +44,10 @@ public class MainSystem {
 
 			// メニュー番号の入力
 			String menuNoStr = br.readLine();
-			menuNo = Integer.parseInt(menuNoStr);
+			inputMenuNumber = Integer.parseInt(menuNoStr);
 
 			// 機能の呼出
-			switch (menuNo) {
+			switch (inputMenuNumber) {
 			case 1:
 				// 全件表示機能の呼出
 				DBController.find();
@@ -107,7 +108,7 @@ public class MainSystem {
 				break;
 
 			}
-		} while (menuNo != 7);
+		} while (inputMenuNumber != STOP_PROCESSING); //マジックナンバー
 		System.out.println("システムを終了します。");
 	}
 }
